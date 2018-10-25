@@ -1,0 +1,28 @@
+%p#notice= notice
+.text-center
+  = image_tag('chuck.png', class: "img-responsive")
+  .row
+    .col-sm-6
+      = link_to 'Search a fact', new_search_path, { :class=>"btn btn-lg btn-success" }
+    .col-sm-6
+      = link_to 'Random fact', searches_path(search: {random: true}), { :class=>"btn btn-lg btn-danger", method: :post}
+
+%hr
+
+.col-sm-10.offset-sm-1
+  .text-center
+    %h1 Searches
+  %table.table.table-striped
+    %thead.thead-dark
+      %tr
+        %th Type
+        %th Value
+        %th{:colspan => "2"}
+    %tbody
+      - @searches.each do |search|
+        %tr
+          %td= search.search_type
+          %td= search.value
+          %td= link_to 'Show', search
+          %td= link_to 'Destroy', search, method: :delete, data: { confirm: 'Are you sure?' }
+  %br/

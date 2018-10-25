@@ -1,0 +1,18 @@
+= form_with(model: search, local: true) do |form|
+  - if search.errors.any?
+    #error_explanation
+      %h2
+        = pluralize(search.errors.count, "error")
+        prohibited this search from being saved:
+      %ul
+        - search.errors.full_messages.each do |message|
+          %li= message
+  .field
+    = form.label :word
+    = form.text_field :word
+  .field
+    = form.label :category
+    = form.text_field :category
+  .actions
+
+    = form.submit class: 'btn btn-success'

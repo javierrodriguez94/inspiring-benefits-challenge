@@ -1,0 +1,17 @@
+= form_with(model: fact, local: true) do |form|
+  - if fact.errors.any?
+    #error_explanation
+      %h2
+        = pluralize(fact.errors.count, "error")
+        prohibited this fact from being saved:
+      %ul
+        - fact.errors.full_messages.each do |message|
+          %li= message
+  .field
+    = form.label :ref_id
+    = form.text_field :ref_id
+  .field
+    = form.label :value
+    = form.text_field :value
+  .actions
+    = form.submit

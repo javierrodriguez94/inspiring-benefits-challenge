@@ -1,0 +1,20 @@
+%p#notice= notice
+
+%p
+
+  %strong Chuch Norris facts by:
+  = @search.search_type
+  search
+  = @search.value
+
+- @search.facts.each do |fact|
+  .col-sm-8
+    .card.border-info
+    .card-body.text-info
+      %h5.card-title Chuck Norris says:
+      .card-text
+        = fact.value
+
+
+
+= link_to 'Back', searches_path, { :class=>"btn btn-primary" }

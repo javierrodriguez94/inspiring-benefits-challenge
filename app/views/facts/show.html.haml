@@ -1,0 +1,10 @@
+%p#notice= notice
+%p
+  %strong Ref:
+  = @fact.ref_id
+%p
+  %strong Value:
+  = @fact.value
+= link_to 'Edit', edit_fact_path(@fact)
+|
+= link_to 'Back', facts_path
